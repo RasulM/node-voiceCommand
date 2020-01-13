@@ -1,0 +1,17 @@
+{
+  "name": "node-tello-drone-v2",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "bufferutil": "^4.0.1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "^4.16.4",
+    "morgan": "~1.9.1",
+    "utf-8-validate": "^5.0.2",
+    "ws": "^7.2.1"
+  }
+}
