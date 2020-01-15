@@ -93,7 +93,7 @@ var voiceCommands ={
     'start recording data': function() {sendMethodToServer('RecordData')},
     'take off': function() {sendMethodToServer('takeOff')},
     'land': function() {sendMethodToServer('land')},
-    'fly up :cm': function(cm) {sendMethodToServer('flyUp',cm+)},
+    'fly up :cm': function(cm) {sendMethodToServer('flyUp',cm)},
     'fly down :cm': function(cm) {sendMethodToServer('flyDown',cm)},
     'fly left :cm': function(cm) {sendMethodToServer('flyLeft',cm)},
     'fly right :cm': function(cm) {sendMethodToServer('flyRight',cm)},
