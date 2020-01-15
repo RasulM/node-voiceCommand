@@ -18,53 +18,74 @@ ws.onmessage =  (event) =>{
 }
 
 function bop(){
-    var msg = {
-      "method":{
-          "name":"methodname",
-          "param":{
-              "distance":"",
-              "degrees":"",
-              "direction":"",
-              "speed":"",
-              "host":"",
-              "port":""
-          }
-      }
-    }
+   
     var e = document.getElementById("methodname");
     var methodname = e.options[e.selectedIndex].value;
     console.log(methodname)
     var param = document.getElementById("param").value
     console.log(param)
-    //TODO add switch case to auto assign param to proper param type
+    port = document.getElementById("port").value
+    host = document.getElementById("host").value
+    sendMethodToServer(methodname,param,host)
+    
+}
+function sendMethodToServer(methodname,param,host,port){
+    var msg = {
+        "method":{
+            "name":"methodname",
+            "param":{
+                "distance":"",
+                "degrees":"",
+                "direction":"",
+                "speed":"",
+                "host":"",
+                "port":""
+            }
+        }
+      }
+
     msg.method.name = methodname;
     switch(methodname){
       case"create":
-      msg.method.param.host = document.getElementById("host").value
-      msg.method.param,port = document.getElementById("port").value
-      case"commandmode":
-      case"RecordData":
-      case"takeOff":
-      case"land":
+        msg.method.param.host = host
+        msg.method.param.port = port
+      break;
       case"flyUp":
+          msg.method.param.distance = param
+          break;
       case"flyDown":
+      msg.method.param.distance = param
+      break;
       case"flyLeft":
+      msg.method.param.distance = param
+          break;
       case"flyRight":
+      msg.method.param.distance = param
+          break;
       case"flyForward":
+      msg.method.param.distance = param
+          break;
       case"flyBack":
+      msg.method.param.distance = param
+          break;
       case"rotate":
+      msg.method.param.degrees = param
+          break;
       case"flipDrone":
+      msg.method.param.direction = param
+          break;
       case"setSpeed":
-      case"closeConnections":
-      case"currentBattery":
-      case"currentSpeed":
-      case"currentFlightTime":
+      msg.method.param.speed = param
+          break;
     }
 
     var strmsg = JSON.stringify(msg)
-  //  ws.send(strmsg)
+    console.log(strmsg)
+    ws.send(strmsg)
+
    alert("sent")
 }
+
 var voiceCommands ={
     'hello': function() { alert('Hello world!'); }
   }

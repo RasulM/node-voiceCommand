@@ -9,7 +9,7 @@ module.exports = class WWSWITHMSGHANDLER{
         })
         this.n =0;
         this.wss.on("connection",(ws)=>{
-            console.log("o")
+            console.log("Connection open")
             ws.on("message",(data)=>{
              this.handleMessage(data,ws)
             }) 
@@ -20,6 +20,7 @@ module.exports = class WWSWITHMSGHANDLER{
     }
 
     handleMessage(data,ws){
+        console.log(data)
         var msg = JSON.parse(data)
         switch(msg.method.name){
             case 'create':
