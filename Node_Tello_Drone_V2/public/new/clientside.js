@@ -12,9 +12,7 @@ ws.onclose = ()=>{
 }
 
 ws.onmessage =  (event) =>{
-    console.log(event)
-    ws.send("Hello mortals" + event.toString())
-
+    console.log(event.data)
 }
 
 function bop(){
@@ -41,7 +39,8 @@ function sendMethodToServer(methodname,param,host ="192.168.10.1",port=8889){
                 "host":"",
                 "port":""
             }
-        }
+        },
+        "response":{}
       }
 
     msg.method.name = methodname;

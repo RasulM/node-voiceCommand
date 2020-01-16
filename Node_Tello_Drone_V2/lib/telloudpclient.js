@@ -59,9 +59,9 @@ module.exports = class TelloController{
     }
 
      startCommandMode(){
-        sendcommand('command');
-        isInCommandMode = true;
-        formatAddMessageToMessageHistory('command');
+        this.sendcommand('command');
+        this.isInCommandMode = true;
+        this.formatAddMessageToMessageHistory('command');
     }
 
     startRecordData(){
@@ -198,19 +198,28 @@ module.exports = class TelloController{
         this.currentSpeedclient.close()
     }
     
-    get currentBattery(){
+    currentBattery(){
         this.sendcommand(`Battery?`,this.currentBatteryclient)
         return this.currentBatteryresponseHistory[0]
     }
     
-    get currentSpeed(){
+   currentSpeed(){
         this.sendcommand(`Speed?`,this.currentSpeedclient)
         return this.currentSpeedresponseHistory[0]
     }
     
-    get currentFlightTime(){
+    currentFlightTime(){
         this.sendcommand(`Time?`,this.currentFlightTimeclient)
         return this.currentBatteryresponseHistory[0]
+    }
+
+    setHOST(host){
+        this.HOST = host
+    }
+
+    setPORT(port){
+        this.PORT = port
+
     }
 
 }
